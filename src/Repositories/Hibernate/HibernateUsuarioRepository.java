@@ -1,13 +1,13 @@
 package Repositories.Hibernate;
 
-import Entities.Usuario;
-import Repositories.UsuarioRepository;
+import Entities.User;
 import Utils.JpaManager;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import Repositories.UserRepository;
 
-public class HibernateUsuarioRepository implements UsuarioRepository {
+public class HibernateUsuarioRepository implements UserRepository {
 
     private final EntityManager entityManager;
 
@@ -16,7 +16,7 @@ public class HibernateUsuarioRepository implements UsuarioRepository {
     }
 
     @Override
-    public Usuario create(Usuario usuario) {
+    public User create(User usuario) {
         try {
             this.entityManager.getTransaction().begin();
             this.entityManager.persist(usuario);
@@ -28,9 +28,9 @@ public class HibernateUsuarioRepository implements UsuarioRepository {
     }
 
     @Override
-    public Usuario buscarPorEmail(String emai) {
+    public User buscarPorEmail(String emai) {
         try {
-            TypedQuery<Usuario> query = this.entityManager.createQuery("SELECT u FROM Usuario u WHERE u.email = :email", Usuario.class);
+            TypedQuery<User> query = this.entityManager.createQuery("SELECT u FROM Usuario u WHERE u.email = :email", User.class);
             query.setParameter("email", emai);
             return query.getSingleResult();
         } catch (NoResultException e) {
