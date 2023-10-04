@@ -22,6 +22,6 @@ public class RegisterUserUseCase {
         
         User u = new User(registerUserDTO.getName(), registerUserDTO.getEmail(), registerUserDTO.getPassword(), registerUserDTO.getFunction_user());
                 
-        return null;
+        return this.userRepository.create(u);
     }
 }

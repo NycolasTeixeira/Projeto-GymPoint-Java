@@ -1,8 +1,17 @@
 package Desktop.Views;
 
+import DTO.RegisterUserDTO;
+import Desktop.Controllers.UserController;
+import Entities.User;
+import Enums.Function;
+import javax.swing.JOptionPane;
+
 public class Register extends javax.swing.JFrame {
 
+    private final UserController userController;
+    
     public Register() {
+        userController = new UserController();
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -14,18 +23,18 @@ public class Register extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfEmail2 = new javax.swing.JTextField();
+        tfName = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        tfEmail3 = new javax.swing.JTextField();
+        tfEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        boxFunction = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        password = new javax.swing.JPasswordField();
-        passwordConfirmation = new javax.swing.JPasswordField();
-        jButton2 = new javax.swing.JButton();
+        tfPassword = new javax.swing.JPasswordField();
+        tfPasswordC = new javax.swing.JPasswordField();
+        createAccount = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar-se");
@@ -41,9 +50,9 @@ public class Register extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jLabel4.setText("Nome Completo");
 
-        tfEmail2.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
+        tfName.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
 
-        tfEmail3.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
+        tfEmail.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jLabel5.setText("Email");
@@ -54,21 +63,31 @@ public class Register extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jLabel7.setText("Senha");
 
-        jComboBox1.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USUÁRIO", "ADMINISTRADOR" }));
+        boxFunction.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
+        boxFunction.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USUÁRIO", "ADMINISTRADOR" }));
 
         jLabel8.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jLabel8.setText("Tipo de Usuário");
 
         jButton1.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        password.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
+        tfPassword.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
 
-        passwordConfirmation.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
+        tfPasswordC.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
-        jButton2.setText("Criar Conta");
+        createAccount.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
+        createAccount.setText("Criar Conta");
+        createAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAccountActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,11 +100,11 @@ public class Register extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfPasswordC, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +116,11 @@ public class Register extends javax.swing.JFrame {
                                         .addGap(335, 335, 335)
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(tfEmail2, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfName, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(tfEmail3, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(boxFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(34, 34, 34)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,7 +132,7 @@ public class Register extends javax.swing.JFrame {
                         .addGap(320, 320, 320)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -128,36 +147,68 @@ public class Register extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tfEmail3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEmail)
+                    .addComponent(boxFunction, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPasswordC, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(createAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountActionPerformed
+        String name = this.tfName.getText();
+        String email = this.tfEmail.getText();
+        String function = this.boxFunction.getSelectedItem().toString();
+        String password = new String(this.tfPassword.getPassword());
+        String passwordC = new String(this.tfPasswordC.getPassword());
+
+        if(!password.equals(passwordC)){
+            JOptionPane.showMessageDialog(null, "SENHA NAO CONFEREM");
+            return;
+        }
+        
+        Function f = function.equals("USUÁRIO") ? Function.USUARIO : Function.ADMINISTRADOR;
+        RegisterUserDTO dto = new RegisterUserDTO(name, email, password, f);
+        
+        User authenticatedUser = this.userController.CreateUser(dto);
+        
+        if(function.equals("USUÁRIO")){
+            this.dispose();
+            new HomeUser(authenticatedUser).setVisible(true);
+        }else{
+            this.dispose();
+            new HomeAdmin(authenticatedUser).setVisible(true);
+        }
+    }//GEN-LAST:event_createAccountActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxFunction;
+    private javax.swing.JButton createAccount;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -166,9 +217,9 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JPasswordField passwordConfirmation;
-    private javax.swing.JTextField tfEmail2;
-    private javax.swing.JTextField tfEmail3;
+    private javax.swing.JTextField tfEmail;
+    private javax.swing.JTextField tfName;
+    private javax.swing.JPasswordField tfPassword;
+    private javax.swing.JPasswordField tfPasswordC;
     // End of variables declaration//GEN-END:variables
 }

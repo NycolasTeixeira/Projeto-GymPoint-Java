@@ -1,14 +1,15 @@
 package Desktop.Views;
 
-import java.util.UUID;
+import Entities.User;
 
 public class HomeAdmin extends javax.swing.JFrame {
 
-    private final UUID userId;
+    private final User user;
 
-    public HomeAdmin(UUID userId) {
-        this.userId = userId;
+    public HomeAdmin(User user) {
+        this.user = user;
         initComponents();
+        this.jLabel1.setText("Olá "+user.getNome());
         this.setLocationRelativeTo(null);
     }
 
@@ -171,11 +172,11 @@ public class HomeAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateGymActionPerformed
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
-        new Profile(this.userId).setVisible(true);
+        //new Profile(this.userId).setVisible(true);
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnValidateCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidateCheckInActionPerformed
-        new ValidateCheckIn(userId).setVisible(true);
+        //new ValidateCheckIn(userId).setVisible(true);
     }//GEN-LAST:event_btnValidateCheckInActionPerformed
 
     private void btnUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAddActionPerformed
@@ -183,7 +184,7 @@ public class HomeAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUserAddActionPerformed
 
     private void menuItemProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemProfileActionPerformed
-        new Profile(this.userId).setVisible(true);
+        //new Profile(this.userId).setVisible(true);
     }//GEN-LAST:event_menuItemProfileActionPerformed
 
     private void menuItemCreateGymActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCreateGymActionPerformed
@@ -195,7 +196,7 @@ public class HomeAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemUserAddActionPerformed
 
     private void menuItemValidateCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemValidateCheckInActionPerformed
-        new ValidateCheckIn(userId).setVisible(true);
+        //new ValidateCheckIn(userId).setVisible(true);
     }//GEN-LAST:event_menuItemValidateCheckInActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

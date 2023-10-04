@@ -32,12 +32,12 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel7" min="-2" pref="64" max="-2" attributes="0"/>
-                          <Component id="password" min="-2" pref="356" max="-2" attributes="0"/>
+                          <Component id="tfPassword" min="-2" pref="356" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel6" min="-2" pref="308" max="-2" attributes="0"/>
-                          <Component id="passwordConfirmation" alignment="0" min="-2" pref="339" max="-2" attributes="0"/>
+                          <Component id="tfPasswordC" alignment="0" min="-2" pref="339" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -52,11 +52,11 @@
                                       <Component id="jLabel8" min="-2" pref="134" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="tfEmail2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfName" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="tfEmail3" min="-2" pref="393" max="-2" attributes="0"/>
+                                          <Component id="tfEmail" min="-2" pref="393" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jComboBox1" min="-2" pref="308" max="-2" attributes="0"/>
+                                          <Component id="boxFunction" min="-2" pref="308" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -75,7 +75,7 @@
                       <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="138" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="237" max="-2" attributes="0"/>
+                      <Component id="createAccount" min="-2" pref="237" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -95,7 +95,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tfEmail2" min="-2" pref="47" max="-2" attributes="0"/>
+              <Component id="tfName" min="-2" pref="47" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -103,8 +103,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="tfEmail3" max="32767" attributes="0"/>
-                  <Component id="jComboBox1" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="tfEmail" max="32767" attributes="0"/>
+                  <Component id="boxFunction" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -113,13 +113,13 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="password" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="passwordConfirmation" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="tfPassword" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="tfPasswordC" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="createAccount" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
@@ -152,7 +152,7 @@
         <Property name="text" type="java.lang.String" value="Nome Completo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfEmail2">
+    <Component class="javax.swing.JTextField" name="tfName">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Fira Sans" size="18" style="0"/>
@@ -161,7 +161,7 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
-    <Component class="javax.swing.JTextField" name="tfEmail3">
+    <Component class="javax.swing.JTextField" name="tfEmail">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Fira Sans" size="18" style="0"/>
@@ -192,7 +192,7 @@
         <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="boxFunction">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Fira Sans" size="18" style="0"/>
@@ -223,28 +223,34 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="password">
+    <Component class="javax.swing.JPasswordField" name="tfPassword">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Fira Sans" size="18" style="0"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passwordConfirmation">
+    <Component class="javax.swing.JPasswordField" name="tfPasswordC">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Fira Sans" size="18" style="0"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="createAccount">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="JetBrainsMono NF" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Criar Conta"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createAccountActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

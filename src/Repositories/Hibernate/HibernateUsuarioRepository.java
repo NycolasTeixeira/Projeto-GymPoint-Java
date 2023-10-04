@@ -22,21 +22,19 @@ public class HibernateUsuarioRepository implements UserRepository {
             this.entityManager.persist(usuario);
             this.entityManager.getTransaction().commit();
             return usuario;
-        } finally {
-            this.entityManager.close();
+        } catch(Exception e){
+            return null;
         }
     }
 
     @Override
-    public User buscarPorEmail(String emai) {
+    public User buscarPorEmail(String email) {
         try {
-            TypedQuery<User> query = this.entityManager.createQuery("SELECT u FROM Usuario u WHERE u.email = :email", User.class);
-            query.setParameter("email", emai);
+            TypedQuery<User> query = this.entityManager.createQuery("SELECT u FROM User AS u WHERE u.email = :email", User.class);
+            query.setParameter("email", email);
             return query.getSingleResult();
         } catch (NoResultException e) {
             return null;
-        }finally {
-            this.entityManager.close();
         }
     }
 

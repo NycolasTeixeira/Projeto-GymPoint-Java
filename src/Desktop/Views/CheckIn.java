@@ -1,5 +1,6 @@
 package Desktop.Views;
 
+import Entities.User;
 import java.util.UUID;
 
 public class CheckIn extends javax.swing.JFrame {

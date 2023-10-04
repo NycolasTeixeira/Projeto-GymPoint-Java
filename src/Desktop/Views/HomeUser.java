@@ -1,14 +1,15 @@
 package Desktop.Views;
 
-import java.util.UUID;
+import Entities.User;
 
 public class HomeUser extends javax.swing.JFrame {
 
-    private final UUID userId;
+    private final User user;
 
-    public HomeUser(UUID userId) {
-        this.userId = userId;
+    public HomeUser(User user) {
+        this.user = user;
         initComponents();
+        this.userName.setText("Olá "+user.getNome());
         this.setLocationRelativeTo(null);
     }
 
@@ -19,7 +20,7 @@ public class HomeUser extends javax.swing.JFrame {
         btnCheckIn = new javax.swing.JButton();
         btnProfile = new javax.swing.JButton();
         btnMakeCheckIn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -64,8 +65,8 @@ public class HomeUser extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
-        jLabel1.setText("Olá, Gustavo");
+        userName.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
+        userName.setText("Olá, Gustavo");
 
         jLabel2.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -73,7 +74,7 @@ public class HomeUser extends javax.swing.JFrame {
 
         jMenu1.setText("Página incial");
 
-        menuItemProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuItemProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         menuItemProfile.setText("Perfil");
         menuItemProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +83,7 @@ public class HomeUser extends javax.swing.JFrame {
         });
         jMenu1.add(menuItemProfile);
 
-        menuItemCheckIns.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuItemCheckIns.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
         menuItemCheckIns.setText("Check-ins");
         menuItemCheckIns.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +92,7 @@ public class HomeUser extends javax.swing.JFrame {
         });
         jMenu1.add(menuItemCheckIns);
 
-        menuItemMakeCheckIn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuItemMakeCheckIn.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         menuItemMakeCheckIn.setText("Fazer check-in");
         menuItemMakeCheckIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +113,7 @@ public class HomeUser extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -128,7 +129,7 @@ public class HomeUser extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,39 +143,39 @@ public class HomeUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckInActionPerformed
-        new CheckIns(this.userId).setVisible(true);
+       // new CheckIns(this.userId).setVisible(true);
     }//GEN-LAST:event_btnCheckInActionPerformed
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
-        new Profile(this.userId).setVisible(true);
+        //new Profile(this.userId).setVisible(true);
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnMakeCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeCheckInActionPerformed
-        new MakeCheckIn(this.userId).setVisible(true);
+       // new MakeCheckIn(this.userId).setVisible(true);
     }//GEN-LAST:event_btnMakeCheckInActionPerformed
 
     private void menuItemProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemProfileActionPerformed
-        new Profile(this.userId).setVisible(true);
+       // new Profile(this.userId).setVisible(true);
     }//GEN-LAST:event_menuItemProfileActionPerformed
 
     private void menuItemCheckInsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCheckInsActionPerformed
-        new CheckIns(this.userId).setVisible(true);
+       // new CheckIns(this.userId).setVisible(true);
     }//GEN-LAST:event_menuItemCheckInsActionPerformed
 
     private void menuItemMakeCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMakeCheckInActionPerformed
-        new MakeCheckIn(this.userId).setVisible(true);
+       // new MakeCheckIn(this.userId).setVisible(true);
     }//GEN-LAST:event_menuItemMakeCheckInActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheckIn;
     private javax.swing.JButton btnMakeCheckIn;
     private javax.swing.JButton btnProfile;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuItemCheckIns;
     private javax.swing.JMenuItem menuItemMakeCheckIn;
     private javax.swing.JMenuItem menuItemProfile;
+    private javax.swing.JLabel userName;
     // End of variables declaration//GEN-END:variables
 }
