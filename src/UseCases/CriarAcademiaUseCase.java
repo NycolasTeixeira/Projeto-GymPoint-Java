@@ -21,9 +21,9 @@ public class CriarAcademiaUseCase {
     }
 
     public Gym executar(CriarAcademiaDTO dto){
-        return null;
-        // receber info - ok;
-        // nuscar 
+     Gym academia = new Gym(dto.getNome(),dto.getTelefone(), dto.getDescricao(), dto.getLatitude(), dto.getLongitude());
+     this.academiaRepository.create(academia);
+        return academia;
     }
     
 }

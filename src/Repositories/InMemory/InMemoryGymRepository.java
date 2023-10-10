@@ -5,10 +5,32 @@
  */
 package Repositories.InMemory;
 
+import Entities.Gym;
+import Repositories.GymRepository;
+import java.util.ArrayList;
+
 /**
  *
  * @author nycolas_teixeira
  */
-public class InMemoryGymRepository {
-    
+public class InMemoryGymRepository implements GymRepository {
+
+    ArrayList<Gym> academias = new ArrayList<>();
+
+    @Override
+    public Gym create(Gym academia) {
+        academias.add(academia);
+        return academia;
+
+    }
+
+    public Gym SearchGymName(String nome) {
+        for (Gym academia : academias) {
+            if (academia.getNome().equals(nome)) {
+                return academia;
+            }
+        }
+        return null;
+    }
+
 }
