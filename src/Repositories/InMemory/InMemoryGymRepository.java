@@ -8,6 +8,7 @@ package Repositories.InMemory;
 import Entities.Gym;
 import Repositories.GymRepository;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -31,6 +32,11 @@ public class InMemoryGymRepository implements GymRepository {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Gym> buscarAcademias(String termo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

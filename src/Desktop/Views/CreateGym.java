@@ -1,5 +1,7 @@
 package Desktop.Views;
 
+import DTO.CriarAcademiaDTO;
+import Desktop.Controllers.GymController;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -44,8 +46,8 @@ public class CreateGym extends javax.swing.JFrame {
                 mapKit.getMainMap().repaint();
             }
         });
-        this.panelMap.setLayout(new BorderLayout());
-        this.panelMap.add(mapKit);
+        this.mapaAcademia.setLayout(new BorderLayout());
+        this.mapaAcademia.add(mapKit);
     }
 
     @SuppressWarnings("unchecked")
@@ -56,14 +58,14 @@ public class CreateGym extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        tfGymName = new javax.swing.JTextField();
+        nomAcademia = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        tfPhone = new javax.swing.JTextField();
+        telAcademia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        taDescription = new javax.swing.JTextArea();
+        descAcademia = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
-        panelMap = new javax.swing.JPanel();
+        mapaAcademia = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -81,34 +83,34 @@ public class CreateGym extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jLabel4.setText("Descrição");
 
-        tfGymName.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
+        nomAcademia.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jLabel5.setText("Telefone");
 
-        tfPhone.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
+        telAcademia.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jLabel6.setText("Nome da Academia");
 
-        taDescription.setColumns(20);
-        taDescription.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        taDescription.setRows(5);
-        jScrollPane1.setViewportView(taDescription);
+        descAcademia.setColumns(20);
+        descAcademia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        descAcademia.setRows(5);
+        jScrollPane1.setViewportView(descAcademia);
 
         jLabel7.setFont(new java.awt.Font("JetBrainsMono NF", 1, 14)); // NOI18N
         jLabel7.setText("Endereço (Localização)");
 
-        panelMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mapaAcademia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout panelMapLayout = new javax.swing.GroupLayout(panelMap);
-        panelMap.setLayout(panelMapLayout);
-        panelMapLayout.setHorizontalGroup(
-            panelMapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout mapaAcademiaLayout = new javax.swing.GroupLayout(mapaAcademia);
+        mapaAcademia.setLayout(mapaAcademiaLayout);
+        mapaAcademiaLayout.setHorizontalGroup(
+            mapaAcademiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        panelMapLayout.setVerticalGroup(
-            panelMapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        mapaAcademiaLayout.setVerticalGroup(
+            mapaAcademiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 241, Short.MAX_VALUE)
         );
 
@@ -145,14 +147,14 @@ public class CreateGym extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfGymName)
+                                .addComponent(nomAcademia)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfPhone)
+                                .addComponent(telAcademia)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panelMap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mapaAcademia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(20, 20, 20))
         );
@@ -168,17 +170,16 @@ public class CreateGym extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(tfGymName, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nomAcademia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(telAcademia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -186,7 +187,7 @@ public class CreateGym extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelMap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mapaAcademia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,20 +199,23 @@ public class CreateGym extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String gymName = this.tfGymName.getText();
-        String phone = this.tfPhone.getText();
-        String description = this.taDescription.getText();
+        String gymName = this.nomAcademia.getText();
+        String phone = this.telAcademia.getText();
+        String description = this.descAcademia.getText();
         Double latitute = this.geoPositionSelected.getLatitude();
         Double longitude = this.geoPositionSelected.getLongitude();
-
-        System.out.println(gymName);
-        System.out.println(phone);
-        System.out.println(description);
-        System.out.println(latitute);
-        System.out.println(longitude);
+        
+        
+        
+      
+        
+        CriarAcademiaDTO dto = new CriarAcademiaDTO(gymName, phone, description, latitute, longitude);
+        new GymController().CriarAcademia(dto);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea descAcademia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -222,9 +226,8 @@ public class CreateGym extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel panelMap;
-    private javax.swing.JTextArea taDescription;
-    private javax.swing.JTextField tfGymName;
-    private javax.swing.JTextField tfPhone;
+    private javax.swing.JPanel mapaAcademia;
+    private javax.swing.JTextField nomAcademia;
+    private javax.swing.JTextField telAcademia;
     // End of variables declaration//GEN-END:variables
 }

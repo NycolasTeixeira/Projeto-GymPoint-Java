@@ -151,7 +151,8 @@ public class HomeUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnMakeCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakeCheckInActionPerformed
-       // new MakeCheckIn(this.userId).setVisible(true);
+     this.dispose();
+     new MakeCheckIn(user.getId()).setVisible(true);
     }//GEN-LAST:event_btnMakeCheckInActionPerformed
 
     private void menuItemProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemProfileActionPerformed

@@ -1,11 +1,14 @@
 package Desktop.Views;
 
+import Desktop.Controllers.GymController;
+import Entities.Gym;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jxmapviewer.JXMapKit;
 import org.jxmapviewer.viewer.DefaultWaypoint;
@@ -18,7 +21,7 @@ public class MakeCheckIn extends javax.swing.JFrame {
     private final JXMapKit mapKit = new JXMapKit();
     private final UUID userId;
     GeoPosition initialPosition = null;
-    List<Object> listGyms = new ArrayList<>();
+    List<Gym> listGyms = new ArrayList<>();
 
     public MakeCheckIn(UUID userId) {
         this.userId = userId;
@@ -49,15 +52,18 @@ public class MakeCheckIn extends javax.swing.JFrame {
 
     private void loadGyms(String query) {
         // BUSCAR AS ACADEMIAS
+        this.listGyms = new GymController().BuscarAcademia(query);
         // VERIFICAR SE É NULA
+        if(listGyms.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Não foi encontrado nenhuma academia");
+            return;
+        }
         // SE FOR RETURN VAZIO
         // SENÃO PREENCHE A TABELA
 
-        this.listGyms.add(""); // REMOVER DEPOIS
-        this.listGyms.add(""); // REMOVER DEPOIS
         DefaultTableModel table = (DefaultTableModel) this.tableGym.getModel();
-        for (Object gym : this.listGyms) {
-            Object[] dados = {"Academia Java", "Musculação, Personal", "(47) 9 9999-9999"};
+        for (Gym gym : this.listGyms) {
+            Object[] dados = {gym.getNome(), gym.getDesc(), gym.getTel() };
             table.addRow(dados);
         }
     }
@@ -222,6 +228,7 @@ public class MakeCheckIn extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String gymName = this.tfSearch.getText();
+        
         loadGyms(gymName);
     }//GEN-LAST:event_btnSearchActionPerformed
 

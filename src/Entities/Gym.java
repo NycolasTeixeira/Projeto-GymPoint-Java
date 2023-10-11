@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Gym {
     @Id
     @Column(name = "id", columnDefinition = "UUID")
-    private final UUID id;
+    private UUID id;
    
     
     @Column(name = "nome", unique = true)
@@ -39,6 +39,9 @@ public class Gym {
         this.latitude = latitude;
         this.id = UUID.randomUUID();
         this.data_criacao = new Date();
+    }
+
+    public Gym() {
     }
 
     public UUID getId() {

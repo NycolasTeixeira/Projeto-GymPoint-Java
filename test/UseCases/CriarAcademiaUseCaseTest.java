@@ -29,7 +29,7 @@ public class CriarAcademiaUseCaseTest {
     }
 
     @Test
-    public void testeAcademiaCDadosValidos() {
+    public void testeAcademiaCDadosValidos() throws Exception {
 
         String nome = "Academia Senai";
         String telefone = "000";
@@ -39,12 +39,34 @@ public class CriarAcademiaUseCaseTest {
 
         CriarAcademiaDTO dto = new CriarAcademiaDTO(nome, telefone, desc, latitude, longitude);
 
-      Gym academia =  this.criarAcademiaUseCase.executar(dto);
-        
-        
+        Gym academia = this.criarAcademiaUseCase.executar(dto);
+
         TestCase.assertEquals("Academia Senai", academia.getNome());
         TestCase.assertEquals("000", academia.getTel());
 
     }
 
+    @Test
+    public void testeAcademiaComNomeIgual() {
+
+        String nome = "Academia Senai";
+        String telefone = "000";
+        String desc = "teste";
+        Double latitude = -48.000;
+        Double longitude = -48.000;
+
+        CriarAcademiaDTO dto = new CriarAcademiaDTO(nome, "001", desc, latitude, longitude);
+
+        Gym academia = new Gym(dto.getNome(), dto.getTelefone(), dto.getDescricao(), dto.getLatitude(), dto.getLongitude());
+        this.academiaRepository.create(academia);
+        Gym a = null;
+        try {
+            a = this.criarAcademiaUseCase.executar(dto);
+        } catch (Exception e) {
+            TestCase.assertEquals("Nome já cadastrado", e.getMessage());
+
+        } finally {
+            TestCase.assertEquals(a, null);
+        }
+    }
 }

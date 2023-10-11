@@ -3,17 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Entities/Gym.java</file>
             <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Repositories/GymRepository.java</file>
             <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Repositories/Hibernate/HibernateGymRepository.java</file>
             <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/.git/config</file>
-            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Repositories/Hibernate/HibernateUsuarioRepository.java</file>
-            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/DTO/CriarAcademiaDTO.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/test/UseCases/CriarAcademiaUseCaseTest.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/test/RegisterUseCase/RegisterUserUseCaseTest.java</file>
             <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Repositories/UserRepository.java</file>
-            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/UseCases/RegisterUserUseCase.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/.env</file>
             <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/UseCases/CriarAcademiaUseCase.java</file>
             <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Main/Main.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Repositories/InMemory/InMemoryGymRepository.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/.gitignore</file>
             <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Entities/User.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Entities/Gym.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/test/UseCases/LoginUseCaseTest.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Desktop/Views/Login.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/UseCases/LoginUseCase.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Enums/Function.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Repositories/Hibernate/HibernateUsuarioRepository.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/DTO/CriarAcademiaDTO.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/DTO/LoginUserDTO.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/UseCases/RegisterUserUseCase.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/DTO/RegisterUserDTO.java</file>
+            <file>file:/C:/Users/nycolas_teixeira/Desktop/pastinha/sdgg/src/Repositories/InMemory/InMemoryUsuarioRepository.java</file>
         </group>
     </open-files>
 </project-private>

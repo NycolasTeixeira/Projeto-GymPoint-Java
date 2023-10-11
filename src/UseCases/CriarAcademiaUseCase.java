@@ -14,16 +14,22 @@ import Repositories.GymRepository;
  * @author nycolas_teixeira
  */
 public class CriarAcademiaUseCase {
+
     private final GymRepository academiaRepository;
 
     public CriarAcademiaUseCase(GymRepository academiaRepository) {
         this.academiaRepository = academiaRepository;
     }
 
-    public Gym executar(CriarAcademiaDTO dto){
-     Gym academia = new Gym(dto.getNome(),dto.getTelefone(), dto.getDescricao(), dto.getLatitude(), dto.getLongitude());
-     this.academiaRepository.create(academia);
+    public Gym executar(CriarAcademiaDTO dto) throws Exception {
+        Gym academiaExistente = this.academiaRepository.SearchGymName(dto.getNome());
+        if (academiaExistente != null) {
+            throw new Exception("Nome já cadastrado");
+        }
+
+        Gym academia = new Gym(dto.getNome(), dto.getTelefone(), dto.getDescricao(), dto.getLatitude(), dto.getLongitude());
+        this.academiaRepository.create(academia);
         return academia;
     }
-    
+
 }
